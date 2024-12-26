@@ -78,20 +78,63 @@ class Sudoku {
     createPuzzle() {
         let cellsToRemove;
         switch(this.difficulty) {
-            case 'easy': cellsToRemove = 30; break;
-            case 'medium': cellsToRemove = 40; break;
-            case 'hard': cellsToRemove = 50; break;
-            default: cellsToRemove = 40;
+            case 'very_easy': cellsToRemove = 25; break; // Très facile : ~56 indices
+            case 'easy': cellsToRemove = 35; break;      // Facile : ~46 indices
+            case 'medium': cellsToRemove = 45; break;    // Moyen : ~36 indices
+            case 'hard': cellsToRemove = 52; break;      // Difficile : ~29 indices
+            case 'expert': cellsToRemove = 58; break;    // Expert : ~23 indices
+            default: cellsToRemove = 45;                 // Par défaut : niveau moyen
         }
 
-        while (cellsToRemove > 0) {
+        let attempts = 0;
+        while (cellsToRemove > 0 && attempts < 1000) {
             let row = Math.floor(Math.random() * 9);
             let col = Math.floor(Math.random() * 9);
+            
             if (this.grid[row][col] !== 0) {
+                let temp = this.grid[row][col];
                 this.grid[row][col] = 0;
-                cellsToRemove--;
+                
+                // Pour les niveaux difficile et expert, on vérifie qu'il n'y a qu'une solution
+                if (this.difficulty === 'hard' || this.difficulty === 'expert') {
+                    if (this.hasUniqueSolution()) {
+                        cellsToRemove--;
+                    } else {
+                        this.grid[row][col] = temp;
+                    }
+                } else {
+                    cellsToRemove--;
+                }
+            }
+            attempts++;
+        }
+    }
+
+    hasUniqueSolution() {
+        // Vérification simplifiée de l'unicité de la solution
+        // Cette méthode pourrait être améliorée pour plus de précision
+        let emptyCells = [];
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                if (this.grid[i][j] === 0) {
+                    emptyCells.push({row: i, col: j});
+                }
             }
         }
+        
+        if (emptyCells.length === 0) return true;
+        
+        const cell = emptyCells[0];
+        let solutions = 0;
+        
+        for (let num = 1; num <= 9; num++) {
+            if (this.isValidMove(cell.row, cell.col, num)) {
+                solutions++;
+                if (solutions > 1) return false;
+            }
+        }
+        
+        return true;
     }
 
     isValidMove(row, col, num) {
