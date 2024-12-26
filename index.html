@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sudoku</title>
+</head>
+<body>
+    <button id="theme-toggle" title="Changer de thème">☀️</button>
+    <div class="game-container">
+        <h1>Sudoku</h1>
+        
+        <div class="controls-top">
+            <div class="timer">
+                Time: <span id="timer">00:00</span>
+            </div>
+            <div class="difficulty">
+                <label for="difficulty-select">Level:</label>
+                <select id="difficulty-select">
+                    <option value="easy">Facile</option>
+                    <option value="medium" selected>Moyen</option>
+                    <option value="hard">Difficile</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="game-board">
+            <div id="sudoku-grid"></div>
+            <div class="number-pad">
+                <div class="number" data-number="1">1</div>
+                <div class="number" data-number="2">2</div>
+                <div class="number" data-number="3">3</div>
+                <div class="number" data-number="4">4</div>
+                <div class="number" data-number="5">5</div>
+                <div class="number" data-number="6">6</div>
+                <div class="number" data-number="7">7</div>
+                <div class="number" data-number="8">8</div>
+                <div class="number" data-number="9">9</div>
+                <div class="number" data-number="0">⌫</div>
+            </div>
+        </div>
+
+        <div class="controls-bottom">
+            <button class="btn" id="new-game-btn">Nouvelle Partie</button>
+            <button class="btn" id="hint-btn" title="Utiliser un indice">💡</button>
+            <button class="btn" id="rules-button" title="Règles du jeu">?</button>
+        </div>
+
+        <div class="hints-remaining">
+            Indices restants: <span id="hints-count">5</span>
+        </div>
+
+        <div id="rules" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h2>Règles du Jeu</h2>
+                <p>Le but du Sudoku est de remplir une grille de 9x9 cases avec des chiffres de 1 à 9, en respectant les règles suivantes :</p>
+                <ul>
+                    <li>Chaque ligne doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
+                    <li>Chaque colonne doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
+                    <li>Chaque sous-grille de 3x3 doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
+                </ul>
+                <button class="close-modal">Fermer</button>
+            </div>
+        </div>
+
+        <div id="victory-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h2>Félicitations !</h2>
+                <p>Vous avez terminé le Sudoku en <span id="final-time">00:00</span> !</p>
+                <button class="close-modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="sudoku.js"></script>
+    <script src="game.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

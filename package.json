@@ -1,0 +1,15 @@
+{
+  "name": "sudoku-game",
+  "version": "1.0.0",
+  "description": "Un jeu de Sudoku développé en JavaScript.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --host=0.0.0.0 --port=3000 ."
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "live-server": "^1.2.2"
+  },
+  "author": "Seb Kompo",
+  "license": "ISC"
+}
