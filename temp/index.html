@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="theme.js"></script>
     <title>Sudoku</title>
 </head>
 <body>
+    <button id="theme-toggle" title="Changer de thème">☀️</button>
     <div class="game-container">
         <h1>Sudoku</h1>
-        <!-- Les boutons de thème seront insérés ici par JavaScript -->
         
         <div class="controls-top">
             <div class="timer">
@@ -54,30 +53,31 @@
         <div class="hints-remaining">
             Indices restants: <span id="hints-count">5</span>
         </div>
-    </div>
 
-    <div id="rules" class="modal" style="display:none;">
-        <div class="modal-content">
-            <h2>Règles du Jeu</h2>
-            <p>Le but du Sudoku est de remplir une grille de 9x9 cases avec des chiffres de 1 à 9, en respectant les règles suivantes :</p>
-            <ul>
-                <li>Chaque ligne doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
-                <li>Chaque colonne doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
-                <li>Chaque sous-grille de 3x3 doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
-            </ul>
-            <button class="close-modal">Fermer</button>
+        <div id="rules" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h2>Règles du Jeu</h2>
+                <p>Le but du Sudoku est de remplir une grille de 9x9 cases avec des chiffres de 1 à 9, en respectant les règles suivantes :</p>
+                <ul>
+                    <li>Chaque ligne doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
+                    <li>Chaque colonne doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
+                    <li>Chaque sous-grille de 3x3 doit contenir tous les chiffres de 1 à 9 sans répétition.</li>
+                </ul>
+                <button class="close-modal">Fermer</button>
+            </div>
         </div>
-    </div>
 
-    <div id="victory-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <h2>Félicitations !</h2>
-            <p>Vous avez terminé le Sudoku en <span id="final-time">00:00</span> !</p>
-            <button class="close-modal">Fermer</button>
+        <div id="victory-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <h2>Félicitations !</h2>
+                <p>Vous avez terminé le Sudoku en <span id="final-time">00:00</span> !</p>
+                <button class="close-modal">Fermer</button>
+            </div>
         </div>
     </div>
 
     <script src="sudoku.js"></script>
     <script src="game.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>
