@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  sudoku:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=development
+    ports:
+      - '192.168.10.231:3001:3000'
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - NODE_ENV=development
