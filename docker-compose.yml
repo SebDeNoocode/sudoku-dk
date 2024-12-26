@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  sudoku:
+    build: .
+    ports:
+      - "3002:3000"
+    restart: unless-stopped
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - NODE_ENV=development
